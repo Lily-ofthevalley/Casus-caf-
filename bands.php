@@ -1,8 +1,6 @@
-
-
 <html>
 <head>
-    <title>Admin</title>
+    <title>Bands</title>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
     <meta name="author" content="Lilith" />
@@ -16,10 +14,17 @@
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
                     <li><a href="events.php">Events</a></li>
-                    <li><a href="bands.php">bands</a></li>
+                    <li><a href="bands.php">Bands</a></li>
                 </ul>
         </div>
     </header>
+    <div class="addBand">
+        <form action="res/addBandResponse.php" method="POST">
+            <input type="text" name="bandNaam" value="" placeholder="Band naam">
+            <input type="text" name="bandGenre" value="" placeholder="Band genre">
+            <input type="submit" name="knop" value="voeg toe">
+        </form>
+    </div>
     <footer class="flexFooter">
         <p>&copy;Casus café</p>
     </footer>
