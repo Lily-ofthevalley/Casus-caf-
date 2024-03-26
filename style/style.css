@@ -1,5 +1,7 @@
 body {
   background-color: #ffb174;
+  margin: 0%;
+  padding: 0%;
 }
 
 header {
@@ -21,9 +23,14 @@ header {
   background-color: #cd4f4f;
 }
 
+.login {
+  margin-left: auto;
+}
+
 .flexHeader {
   background-color: #ee5a5a;
-  position: absolute;
+  position: fixed;
+  z-index: 9999;
   top: 0;
   left: 0;
   width: 100%;
@@ -32,9 +39,28 @@ header {
   justify-content: left;
 }
 
+.bottomInfo {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+  background-color: #f39393;
+  font-size: large;
+  color: darkred;
+}
+
+.bottomInfo ul {
+  list-style-type: none;
+}
+
+#infoText {
+  font-size: x-large;
+  border-bottom: 2px solid darkred;
+  margin-bottom: 1em;
+}
+
 .flexFooter {
   background-color: #ee5a5a;
-  position: absolute;
+  z-index: 9999;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -44,14 +70,17 @@ header {
 }
 
 .inlog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #ee5a5a;
+  width: 10em;
+  margin: auto;
+  margin-bottom: 7.7em;
   padding: 3em;
   padding-bottom: 2em;
-  border-radius: 15%;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  border-radius: 3em;
+  position: relative;
 }
 
 .form-group {
@@ -60,35 +89,34 @@ header {
 
 .addBand,
 .addEvent {
-  padding: 3em;
-  padding-bottom: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 6em;
   border-radius: 15%;
-  position: fixed;
-  top: 15%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
 }
 
 .addBandToEvent {
-  padding-bottom: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   border-radius: 15%;
-  position: fixed;
-  top: 25%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .bandTable {
   background-color: #ee5a5a;
-  position: fixed;
+  position: relative;
   display: flex;
-  top: 25%;
-  left: 26%;
   justify-content: center;
   align-items: center;
+  margin: auto;
+  margin-bottom: 2em;
   padding: 2em;
   border-radius: 2em;
   width: 40%;
+  height: 25.95em;
 }
 
 .bandTableHead {
@@ -106,17 +134,18 @@ header {
 
 .eventList {
   display: flex;
-  position: fixed;
-  top: 25%;
-  width: 80%;
-  justify-content: space-between;
+  position: relative;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
 }
 
 .event {
   width: 50%;
-  margin: auto;
+  padding: 3em;
+  margin-bottom: 2em;
+  background-color: #ee5a5a;
+  border-radius: 3em;
 }
 
 .eventInfo {
@@ -124,4 +153,51 @@ header {
   justify-content: space-evenly;
   flex-direction: row;
   align-items: center;
+}
+
+.eventName {
+  font-size: xx-large;
+}
+
+.bandList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.headImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 12em;
+  margin-bottom: 10em;
+}
+
+.img {
+  position: absolute;
+  width: 80%;
+  height: 270px;
+  border-radius: 3em;
+}
+
+.pageTitel {
+  position: absolute;
+  color: whitesmoke;
+  border: 10px solid whitesmoke;
+  font-size: 7em;
+  padding: 0.5em;
+  border-radius: 1em;
+}
+
+.homeText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3em;
+  padding-top: 1em;
+  font-size: large;
+  text-align: center;
 }

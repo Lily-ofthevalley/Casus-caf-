@@ -15,11 +15,14 @@
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
                     <li><a href="agenda.php">Agenda</a></li>
-                    <li><a href="login.php">Login</a></li>
+                    <li class='login'><a href="login.php">Login</a></li>
                 </ul>
         </div>
-        <!-- <p><a id="logout" href="login.php?loguit">uitloggen</a></p> -->
     </header>
+    <div class="headImg">
+            <img class='img' src="img/cafe.png" alt="het café">
+            <p class='pageTitel'>Login</p>
+    </div>
     <div class="inlog">
         <form action="res/inlogResponse.php" method="POST">
             <div class="form-group">

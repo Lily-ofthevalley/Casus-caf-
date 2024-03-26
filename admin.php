@@ -1,5 +1,3 @@
-
-
 <html>
 <head>
     <title>Admin</title>
@@ -15,8 +13,9 @@
             <nav class="navBar">
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
-                    <li><a href="events.php">Events</a></li>
+                    <li><a href="events.php">Agenda</a></li>
                     <li><a href="bands.php">bands</a></li>
+                    <li class='login'><a href="login.php">Login</a></li>
                 </ul>
         </div>
     </header>

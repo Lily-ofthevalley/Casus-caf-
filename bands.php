@@ -13,8 +13,9 @@
             <nav class="navBar">
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
-                    <li><a href="events.php">Events</a></li>
+                    <li><a href="events.php">Agenda</a></li>
                     <li><a href="bands.php">Bands</a></li>
+                    <li class='login'><a href="login.php">Login</a></li>
                 </ul>
         </div>
     </header>
@@ -32,7 +33,7 @@
                 <td class="bandRight">Genre</td>
             </tr>
             <?php
-            require_once "dbh.php";
+            require_once "phpscripts/dbh.php";
 
             try {
                 $sql = "SELECT BandNaam, Genre FROM Band";
