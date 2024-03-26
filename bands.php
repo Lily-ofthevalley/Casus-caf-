@@ -25,6 +25,37 @@
             <input type="submit" name="knop" value="voeg toe">
         </form>
     </div>
+    <div class="bandTable">
+        <table>
+            <tr class="bandTableHead">
+                <td class="bandLeft">Band</td>
+                <td class="bandRight">Genre</td>
+            </tr>
+            <?php
+            require_once "dbh.php";
+
+            try {
+                $sql = "SELECT BandNaam, Genre FROM Band";
+                $result = $pdo->query($sql);
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+                die();
+            }
+
+            if ($result->rowCount() > 0) {
+                while ($row = $result->fetch(PDO::FETCH_ASSOC))
+                {
+                    echo "<tr>";
+                    echo "<td class='bandLeft'>".$row["BandNaam"]."</td>";
+                    echo "<td class='bandRight'>".$row["Genre"]."</td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='3'>No data found</td></tr>";
+            }
+            ?>
+        </table>
+    </div>
     <footer class="flexFooter">
         <p>&copy;Casus café</p>
     </footer>
