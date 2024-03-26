@@ -28,36 +28,46 @@
         </form>
     </div>
     <div class="bandTable">
-        <table>
-            <tr class="bandTableHead">
-                <td class="bandLeft">Band</td>
-                <td class="bandRight">Genre</td>
-            </tr>
-            <?php
-            require_once "phpscripts/dbh.php";
+        <?php
+        require_once "phpscripts/dbh.php";
 
-            try {
+        try {
                 $sql = "SELECT BandNaam, Genre FROM Band";
                 $result = $pdo->query($sql);
             } catch (PDOException $e) {
                 echo "Error: " . $e->getMessage();
                 die();
             }
-
+    
+        echo "<div class='list'>";
+        echo"<p class='hlist'>Band</p>";
+        echo "<ul class='bandList'>";
             if ($result->rowCount() > 0) {
-                while ($row = $result->fetch(PDO::FETCH_ASSOC))
-                {
-                    echo "<tr>";
-                    echo "<td class='bandLeft'>".$row["BandNaam"]."</td>";
-                    echo "<td class='bandRight'>".$row["Genre"]."</td>";
-                    echo "</tr>";
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                echo "<li>" . $row["BandNaam"] . "</li>";
                 }
             } else {
-                echo "<tr><td colspan='3'>No data found</td></tr>";
+            echo "<p>No data found</p>";
             }
-            ?>
-        </table>
-    </div>
+            echo "</ul>";
+            echo "</div>";
+
+            $result->execute();
+
+            echo "<div class='list'>";
+            echo "<p class='hlist'>Genre</p>";
+            echo "<ul class='bandList'>";
+            if ($result->rowCount() > 0) {
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                echo "<li>" . $row["Genre"] . "</li>";
+            }
+        } else {
+            echo "<p>No data found</p>";
+        }
+        echo "</ul>";
+        echo "</div>";
+        ?>
+</div>
     <footer class="flexFooter">
         <p>&copy;Casus café</p>
     </footer>
