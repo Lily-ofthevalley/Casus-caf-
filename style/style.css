@@ -4,10 +4,6 @@ body {
   padding: 0%;
 }
 
-header {
-  background-color: #ee5a5a;
-}
-
 .navBar ul {
   list-style-type: none;
   display: flex;
@@ -23,20 +19,17 @@ header {
   background-color: #cd4f4f;
 }
 
-.login {
-  margin-left: auto;
-}
-
 .flexHeader {
   background-color: #ee5a5a;
   position: fixed;
   z-index: 9999;
-  top: 0;
-  left: 0;
+  top: 0%;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: left;
+}
+
+.login {
+  margin-left: auto;
+  padding-right: 2.5em;
 }
 
 .bottomInfo {

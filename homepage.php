@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>Casus café</title>
@@ -49,6 +50,7 @@
                 <li>Vrijdag: 09:00 - 00:00 uur</li>
                 <li>Zaterdag: 12:00 - 01:00 uur</li>
                 <li>Zondag: 12:00 - 01:00 uur</li>
+            </ul>
         </div>
         <div class='adres'>
             <ul>
