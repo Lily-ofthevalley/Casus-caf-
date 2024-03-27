@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +13,14 @@
     <link rel="stylesheet" type="text/css" href="style/style.css" />
 </head>
 <body>
-    <header class="flexHeader">
+    <header>
         <div>
-            <nav class="navBar">
+            <nav>
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
                     <li><a href="events.php">Agenda</a></li>
                     <li><a href="bands.php">Bands</a></li>
-                    <li class='login'><a href="login.php">Login</a></li>
+                    <li class='loginBtn'><a href="login.php">Login</a></li>
                 </ul>
         </div>
     </header>

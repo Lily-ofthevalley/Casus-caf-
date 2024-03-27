@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,19 +13,19 @@
     <link rel="stylesheet" type="text/css" href="style/style.css" />
 </head>
 <body>
-    <header class="flexHeader">
+    <header>
         <div>
-            <nav class="navBar">
+            <nav>
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
                     <li><a href="agenda.php">Agenda</a></li>
-                    <li class='login'><a href="login.php">Login</a></li>
+                    <li class='loginBtn'><a href="login.php">Login</a></li>
                 </ul>
         </div>
     </header>
     <div class="headImg">
-            <img class='img' src="img/cafe.png" alt="het café">
-            <p class='pageTitel'>Agenda</p>
+            <img src="img/cafe.png" alt="het café">
+            <p>Agenda</p>
     </div>
     <?php require_once "phpscripts/agendaphp.php" ?>
     <div class='bottomInfo'>
@@ -36,7 +40,7 @@
                 <li>Zaterdag: 12:00 - 01:00 uur</li>
                 <li>Zondag: 12:00 - 01:00 uur</li>
         </div>
-        <div class='adres'>
+        <div>
             <ul>
                 <li id='infoText'>CasusCafé</li>
                 <li>Jan van Galenstraat 20,</li>

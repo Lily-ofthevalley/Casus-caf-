@@ -1,25 +1,12 @@
 body {
   background-color: #ffb174;
-  margin: 0%;
-  padding: 0%;
+  margin: 0;
+  padding: 0;
 }
 
-.navBar ul {
-  list-style-type: none;
-  display: flex;
-}
-
-.navBar a {
-  text-decoration: none;
-  color: black;
-  padding: 1em;
-}
-
-.navBar a:hover {
-  background-color: #cd4f4f;
-}
-
-.flexHeader {
+/*Styles for the navigation bar at the top of the screen*/
+/*---------------------------------------------------*/
+Header {
   background-color: #ee5a5a;
   position: fixed;
   z-index: 9999;
@@ -27,9 +14,86 @@ body {
   width: 100%;
 }
 
-.login {
+header ul {
+  list-style-type: none;
+  display: flex;
+}
+
+header a {
+  text-decoration: none;
+  color: black;
+  padding: 1em;
+}
+
+header a:hover {
+  background-color: #cd4f4f;
+}
+
+.loginBtn {
   margin-left: auto;
   padding-right: 2.5em;
+}
+/*---------------------------------------------------*/
+
+/*Styles for the image with the title at the top of each public page*/
+/*---------------------------------------------------*/
+.headImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 12em;
+  margin-bottom: 10em;
+}
+
+.headImg img {
+  position: absolute;
+  width: 80%;
+  height: 270px;
+  border-radius: 3em;
+}
+
+.headImg p {
+  position: absolute;
+  color: whitesmoke;
+  border: 10px solid whitesmoke;
+  font-size: 7em;
+  padding: 0.5em;
+  border-radius: 1em;
+}
+/*---------------------------------------------------*/
+
+/*Styles for the text on the homepage*/
+/*---------------------------------------------------*/
+.homeText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3em;
+  padding-top: 1em;
+  font-size: large;
+  text-align: center;
+}
+/*---------------------------------------------------*/
+
+/*Styles for the footer and info at the bottom of the website*/
+/*---------------------------------------------------*/
+.flexFooter {
+  background-color: #ee5a5a;
+  z-index: 9999;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#infoText {
+  font-size: x-large;
+  border-bottom: 2px solid darkred;
+  margin-bottom: 1em;
 }
 
 .bottomInfo {
@@ -44,24 +108,10 @@ body {
 .bottomInfo ul {
   list-style-type: none;
 }
+/*---------------------------------------------------*/
 
-#infoText {
-  font-size: x-large;
-  border-bottom: 2px solid darkred;
-  margin-bottom: 1em;
-}
-
-.flexFooter {
-  background-color: #ee5a5a;
-  z-index: 9999;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/*Styles for the login screen*/
+/*---------------------------------------------------*/
 .inlog {
   display: flex;
   justify-content: center;
@@ -69,17 +119,17 @@ body {
   background-color: #ee5a5a;
   width: 10em;
   margin: auto;
-  margin-bottom: 8.7em;
+  margin-bottom: 10.3em;
   padding: 3em;
+  padding-top: 2em;
   padding-bottom: 2em;
   border-radius: 3em;
   position: relative;
 }
+/*---------------------------------------------------*/
 
-.form-group {
-  margin-bottom: 5px;
-}
-
+/*Styles for the band and event adding forms*/
+/*---------------------------------------------------*/
 .addBand,
 .addEvent {
   display: flex;
@@ -99,7 +149,10 @@ body {
   border-radius: 15%;
   margin: 1em;
 }
+/*---------------------------------------------------*/
 
+/*Styles for the list of bands on the bands page*/
+/*---------------------------------------------------*/
 .bandTable {
   background-color: #ee5a5a;
   position: relative;
@@ -127,16 +180,10 @@ body {
   font-size: x-large;
   border-bottom: 2px solid black;
 }
+/*---------------------------------------------------*/
 
-.bandLeft {
-  border-right: 2px solid black;
-  border-bottom: 2px solid black;
-}
-
-.bandRight {
-  border-bottom: 2px solid black;
-}
-
+/*Styles for the events*/
+/*---------------------------------------------------*/
 .eventList {
   display: flex;
   position: relative;
@@ -146,11 +193,20 @@ body {
 }
 
 .event {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 50%;
   padding: 3em;
+  padding-top: 0.5em;
   margin-bottom: 2em;
   background-color: #ee5a5a;
   border-radius: 3em;
+}
+
+.eventName {
+  font-size: xx-large;
 }
 
 .eventInfo {
@@ -158,44 +214,27 @@ body {
   justify-content: space-evenly;
   flex-direction: row;
   align-items: center;
-}
-
-.eventName {
-  font-size: xx-large;
-}
-
-.headImg {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  margin-top: 12em;
-  margin-bottom: 10em;
-}
-
-.img {
-  position: absolute;
   width: 80%;
-  height: 270px;
-  border-radius: 3em;
 }
 
-.pageTitel {
-  position: absolute;
-  color: whitesmoke;
-  border: 10px solid whitesmoke;
-  font-size: 7em;
-  padding: 0.5em;
-  border-radius: 1em;
+.bandsEvent {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.homeText {
+.bandsEvent div {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 3em;
-  padding-top: 1em;
-  font-size: large;
-  text-align: center;
 }
+
+.bandsEvent ul {
+  list-style-type: none;
+}
+
+.bandsEvent p {
+  font-size: x-large;
+}
+/*---------------------------------------------------*/

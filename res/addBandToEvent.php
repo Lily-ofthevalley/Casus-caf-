@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $bandNaam = $_POST["band"];
 
     try{
-        require_once "../dbh.php";
+        require_once "../phpscripts/dbh.php";
 
         $eventQuery = "SELECT idEvent FROM Event WHERE Naam = ?";
         $eventStmt = $pdo->prepare($eventQuery);

@@ -14,13 +14,13 @@
                 while ($row = $resultEvent->fetch(PDO::FETCH_ASSOC))
                 {
                     echo "<div class='event'>";
-                    echo "<div class='eventInfo'>";
-                    echo "<p>".$row["Datum"].' '.$row["BeginTijd"]."</p>";
                     echo "<p class='eventName'>".$row["Naam"]."</p>";
-                    echo "<p>".$row["Entree"]. " Euro</p>";
+                    echo "<div class='eventInfo'>";
+                    echo "<p>Datum: ".$row["Datum"]."</p>";
+                    echo "<p>Aanvangstijd: ".$row["BeginTijd"]."</p>";
+                    echo "<p>Prijs: ".$row["Entree"]. " Euro</p>";
                     echo "</div>";
-                    echo "<div class='bandList'>";
-                    echo "<p>Artists</p>";
+                    echo "<div class='bandsEvent'>";
 
                     try {
                         $idEvent = $row["idEvent"];
@@ -28,11 +28,24 @@
                         $resultBands = $pdo->query($sqlBands);
 
                         if ($resultBands->rowCount() > 0){
+                            echo "<div>";
+                            echo "<p>Artiesten</p>";
                             echo "<ul>";
                             while ($bandRow = $resultBands->fetch(PDO::FETCH_ASSOC)){
-                                echo "<li>".$bandRow["BandNaam"].' '.$bandRow["Genre"]."</li>";
+                                echo "<li>".$bandRow["BandNaam"]."</li>";
                             }
                             echo "</ul>";
+                            echo "</div>";
+
+                            $resultBands = $pdo->query($sqlBands);
+                            echo "<div>";
+                            echo "<p>Genre</p>";
+                            echo "<ul>";
+                            while ($bandRow = $resultBands->fetch(PDO::FETCH_ASSOC)){
+                                echo "<li>".$bandRow["Genre"]."</li>";
+                            }
+                            echo "</ul>";
+                            echo "</div>";
                         }else{
                             echo "<p>No bands scheduled for this event</p>";
                         }
