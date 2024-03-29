@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $prijs = $_POST["prijs"];
 
     try{
-        require_once "../phpscripts/dbh.php";
+        require_once "../inclusions/dbh.php";
 
         $query = "INSERT INTO event (Naam, Entree, Datum, Begintijd) VALUES (?, ?, ?, ?);";
 

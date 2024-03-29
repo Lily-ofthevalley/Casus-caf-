@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if ($_SESSION["user"]["rol"] == "administrator"){   
+}else{
+    header('location: homepage.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,59 +23,20 @@ session_start();
             <nav>
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
-                    <li><a href="events.php">Agenda</a></li>
-                    <li><a href="bands.php">Bands</a></li>
-                    <li class='loginBtn'><a href="login.php">Login</a></li>
+                    <?php require_once 'inclusions/navBarChange.inc.php' ?>
+                    <?php require_once 'inclusions/loginBtn.inc.php' ?>
                 </ul>
         </div>
     </header>
     <div class="addBand">
-        <form action="res/addBandResponse.php" method="POST">
+        <form action="responses/addBandResponse.php" method="POST">
             <input type="text" name="bandNaam" value="" placeholder="Band naam">
             <input type="text" name="bandGenre" value="" placeholder="Band genre">
             <input type="submit" name="knop" value="voeg toe">
         </form>
     </div>
     <div class="bandTable">
-        <?php
-        require_once "phpscripts/dbh.php";
-
-        try {
-                $sql = "SELECT BandNaam, Genre FROM Band";
-                $result = $pdo->query($sql);
-            } catch (PDOException $e) {
-                echo "Error: " . $e->getMessage();
-                die();
-            }
-    
-        echo "<div class='list'>";
-        echo"<p class='hlist'>Band</p>";
-        echo "<ul class='bandList'>";
-            if ($result->rowCount() > 0) {
-                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                echo "<li>" . $row["BandNaam"] . "</li>";
-                }
-            } else {
-            echo "<p>No data found</p>";
-            }
-            echo "</ul>";
-            echo "</div>";
-
-            $result->execute();
-
-            echo "<div class='list'>";
-            echo "<p class='hlist'>Genre</p>";
-            echo "<ul class='bandList'>";
-            if ($result->rowCount() > 0) {
-                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                echo "<li>" . $row["Genre"] . "</li>";
-            }
-        } else {
-            echo "<p>No data found</p>";
-        }
-        echo "</ul>";
-        echo "</div>";
-        ?>
+        <?php require_once 'inclusions/bandList.inc.php' ?>
 </div>
     <footer class="flexFooter">
         <p>&copy;Casus café</p>

@@ -18,8 +18,8 @@ session_start();
             <nav>
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
-                    <li><a href="agenda.php">Agenda</a></li>
-                    <li class='loginBtn'><a href="login.php">Login</a></li>
+                    <?php require_once 'inclusions/navBarChange.inc.php' ?>
+                    <?php require_once 'inclusions/loginBtn.inc.php' ?>
                 </ul>
         </div>
     </header>

@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $genre = $_POST["bandGenre"];
 
     try{
-        require_once "../phpscripts/dbh.php";
+        require_once "../inclusions/dbh.php";
 
         $query = "INSERT INTO band (BandNaam, Genre) VALUES (?, ?);";
 

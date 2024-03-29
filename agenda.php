@@ -18,8 +18,8 @@ session_start();
             <nav>
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
-                    <li><a href="agenda.php">Agenda</a></li>
-                    <li class='loginBtn'><a href="login.php">Login</a></li>
+                    <?php require_once 'inclusions/navBarChange.inc.php' ?>
+                    <?php require_once 'inclusions/loginBtn.inc.php' ?>
                 </ul>
         </div>
     </header>
@@ -27,7 +27,7 @@ session_start();
             <img src="img/cafe.png" alt="het café">
             <p>Agenda</p>
     </div>
-    <?php require_once "phpscripts/agendaphp.php" ?>
+    <?php require_once "inclusions/agendaphp.php" ?>
     <div class='bottomInfo'>
         <div class='openHours'>
             <ul>

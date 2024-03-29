@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if ($_SESSION["user"]["rol"] == "administrator"){   
+}else{
+    header('location: homepage.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,14 +23,13 @@ session_start();
             <nav>
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
-                    <li><a href="events.php">Agenda</a></li>
-                    <li><a href="bands.php">Bands</a></li>
-                    <li class='loginBtn'><a href="login.php">Login</a></li>
+                    <?php require_once 'inclusions/navBarChange.inc.php' ?>
+                    <?php require_once 'inclusions/loginBtn.inc.php' ?>
                 </ul>
         </div>
     </header>
     <div class="addEvent">
-        <form action="res/addEventResponse.php" method="POST">
+        <form action="responses/addEventResponse.php" method="POST">
             <input type="text" name="naam" value="" placeholder="Event naam">
             <input type="text" name="datum" value="" placeholder="yyyy-mm-dd">
             <input type="time" name="tijd" value="" placeholder="Aanvangsttijd">
@@ -34,13 +38,13 @@ session_start();
         </form>
     </div>
     <div class="addBandToEvent">
-        <form action="res/addBandToEvent.php" method="POST">
+        <form action="responses/addBandToEvent.php" method="POST">
             <input type="text" name="event" value="" placeholder="Event naam">
             <input type="text" name="band" value="" placeholder="Band naam">
             <input type="submit" name="knop" value="voeg toe">
         </form>
     </div>
-    <?php require_once "phpscripts/agendaphp.php" ?>
+    <?php require_once "inclusions/agendaphp.php" ?>
     <footer class="flexFooter">
         <p>&copy;Casus café</p>
     </footer>
