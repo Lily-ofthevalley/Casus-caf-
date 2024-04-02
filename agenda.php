@@ -27,7 +27,7 @@ session_start();
             <img src="img/cafe.png" alt="het café">
             <p>Agenda</p>
     </div>
-    <?php require_once "inclusions/agendaphp.php" ?>
+    <?php require_once "inclusions/agendaData.inc.php" ?>
     <div class='bottomInfo'>
         <div class='openHours'>
             <ul>

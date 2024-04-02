@@ -35,6 +35,12 @@ if ($_SESSION["user"]["rol"] == "administrator"){
             <input type="submit" name="knop" value="voeg toe">
         </form>
     </div>
+    <div class="removeForm">
+        <form action="responses/removeBandResponse.php" method="POST">
+            <input type="text" name="band" value="" placeholder="Band naam">
+            <input type="submit" name="knop" value="verwijder">
+        </form>
+    </div>
     <div class="bandTable">
         <?php require_once 'inclusions/bandList.inc.php' ?>
 </div>

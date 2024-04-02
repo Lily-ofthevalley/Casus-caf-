@@ -28,7 +28,7 @@ session_start();
             <p>Login</p>
     </div>
     <div class="inlog">
-        <form action="responses/inlogSesResponse.php" method="POST">
+        <form action="responses/inlogResponse.php" method="POST">
             <div>
             <input type="text" name="naam" value="" placeholder="naam"><br>
             </div>

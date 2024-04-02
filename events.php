@@ -44,7 +44,13 @@ if ($_SESSION["user"]["rol"] == "administrator"){
             <input type="submit" name="knop" value="voeg toe">
         </form>
     </div>
-    <?php require_once "inclusions/agendaphp.php" ?>
+    <div class="removeForm">
+        <form action="responses/removeEventResponse.php" method="POST">
+            <input type="text" name="event" value="" placeholder="Event naam">
+            <input type="submit" name="knop" value="verwijder">
+        </form>
+    </div>
+    <?php require_once "inclusions/agendaData.inc.php" ?>
     <footer class="flexFooter">
         <p>&copy;Casus café</p>
     </footer>

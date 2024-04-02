@@ -149,6 +149,12 @@ header a:hover {
   border-radius: 15%;
   margin: 1em;
 }
+
+.removeForm {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1em;
+}
 /*---------------------------------------------------*/
 
 /*Styles for the list of bands on the bands page*/

@@ -1,0 +1,225 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema CasusCafe
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema CasusCafe
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `CasusCafe` DEFAULT CHARACTER SET utf8 ;
+USE `CasusCafe` ;
+
+-- -----------------------------------------------------
+-- Table `CasusCafe`.`Band`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `CasusCafe`.`Band` (
+  `idBand` INT NOT NULL AUTO_INCREMENT,
+  `BandNaam` VARCHAR(45) NULL,
+  `Genre` VARCHAR(45) NULL,
+  `Herkomst` VARCHAR(45) NULL,
+  `Omschrijving` VARCHAR(80) NULL,
+  PRIMARY KEY (`idBand`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `CasusCafe`.`BandLid`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `CasusCafe`.`BandLid` (
+  `idBandLid` INT NOT NULL AUTO_INCREMENT,
+  `Voornaam` VARCHAR(45) NULL,
+  `Tussenvoegsels` VARCHAR(45) NULL,
+  `Achternaam` VARCHAR(45) NULL,
+  `idBand` INT NOT NULL,
+  `Rol` VARCHAR(45) NULL,
+  `Telefoon` CHAR(10) NULL,
+  `Email` VARCHAR(45) NULL,
+  PRIMARY KEY (`idBandLid`),
+  INDEX `fk_BandLid_Band_idx` (`idBand` ASC) VISIBLE,
+  CONSTRAINT `fk_BandLid_Band`
+    FOREIGN KEY (`idBand`)
+    REFERENCES `CasusCafe`.`Band` (`idBand`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `CasusCafe`.`Klant`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `CasusCafe`.`Klant` (
+  `idKlant` INT NOT NULL AUTO_INCREMENT,
+  `Postcode` CHAR(6) NOT NULL,
+  PRIMARY KEY (`idKlant`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `CasusCafe`.`Event`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `CasusCafe`.`Event` (
+  `idEvent` INT NOT NULL AUTO_INCREMENT,
+  `Naam` VARCHAR(45) NULL,
+  `Datum` DATE NULL,
+  `BeginTijd` TIME NULL,
+  `Entree` DECIMAL(4,2) NULL,
+  `AantalKlanten` INT NULL,
+  `Uitverkocht` TINYINT NULL DEFAULT 0,
+  `DrinkenOmzet` DECIMAL(4,2) NULL,
+  PRIMARY KEY (`idEvent`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `CasusCafe`.`Optreden`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `CasusCafe`.`Optreden` (
+  `idOptreden` INT NOT NULL AUTO_INCREMENT,
+  `idBand` INT NOT NULL,
+  `idEvent` INT NOT NULL,
+  `HoofdAct` VARCHAR(45) NOT NULL,
+  `SupportAct` VARCHAR(45) NULL,
+  `Aanvangsttijd` TIME NULL,
+  `AantalSets` INT NULL,
+  `SetDuur` TIME NULL,
+  PRIMARY KEY (`idOptreden`),
+  INDEX `fk_band optreden_Band1_idx` (`idBand` ASC) VISIBLE,
+  INDEX `fk_band optreden_Optreden1_idx` (`idEvent` ASC) VISIBLE,
+  CONSTRAINT `fk_band optreden_Band1`
+    FOREIGN KEY (`idBand`)
+    REFERENCES `CasusCafe`.`Band` (`idBand`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_band optreden_Optreden1`
+    FOREIGN KEY (`idEvent`)
+    REFERENCES `CasusCafe`.`Event` (`idEvent`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `CasusCafe`.`Klant_has_Event`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `CasusCafe`.`Klant_has_Event` (
+  `Klant_idKlant` INT NOT NULL,
+  `Event_idEvent` INT NOT NULL,
+  PRIMARY KEY (`Klant_idKlant`, `Event_idEvent`),
+  INDEX `fk_Klant_has_Event_Event1_idx` (`Event_idEvent` ASC) VISIBLE,
+  INDEX `fk_Klant_has_Event_Klant1_idx` (`Klant_idKlant` ASC) VISIBLE,
+  CONSTRAINT `fk_Klant_has_Event_Klant1`
+    FOREIGN KEY (`Klant_idKlant`)
+    REFERENCES `CasusCafe`.`Klant` (`idKlant`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Klant_has_Event_Event1`
+    FOREIGN KEY (`Event_idEvent`)
+    REFERENCES `CasusCafe`.`Event` (`idEvent`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `CasusCafe`.`Event_has_Band`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `CasusCafe`.`Event_has_Band` (
+  `Event_idEvent` INT NOT NULL,
+  `Band_idBand` INT NOT NULL,
+  `actType` VARCHAR(45) NULL,
+  `sets` INT NULL,
+  `setDuur` TIME NULL,
+  PRIMARY KEY (`Event_idEvent`, `Band_idBand`),
+  INDEX `fk_Event_has_Band_Band1_idx` (`Band_idBand` ASC) VISIBLE,
+  INDEX `fk_Event_has_Band_Event1_idx` (`Event_idEvent` ASC) VISIBLE,
+  CONSTRAINT `fk_Event_has_Band_Event1`
+    FOREIGN KEY (`Event_idEvent`)
+    REFERENCES `CasusCafe`.`Event` (`idEvent`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Event_has_Band_Band1`
+    FOREIGN KEY (`Band_idBand`)
+    REFERENCES `CasusCafe`.`Band` (`idBand`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `CasusCafe`.`Login`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `CasusCafe`.`Login` (
+  `idLogin` INT NOT NULL AUTO_INCREMENT,
+  `Username` VARCHAR(45) NULL,
+  `Password` VARCHAR(45) NULL,
+  `rol` VARCHAR(45) NULL,
+  PRIMARY KEY (`idLogin`))
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `CasusCafe`.`Band`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `CasusCafe`;
+INSERT INTO `CasusCafe`.`Band` (`idBand`, `BandNaam`, `Genre`, `Herkomst`, `Omschrijving`) VALUES (1, 'The Midnight Wanderers', 'Indie Rock', NULL, NULL);
+INSERT INTO `CasusCafe`.`Band` (`idBand`, `BandNaam`, `Genre`, `Herkomst`, `Omschrijving`) VALUES (2, 'Soulful Serenade', 'R&B', NULL, NULL);
+INSERT INTO `CasusCafe`.`Band` (`idBand`, `BandNaam`, `Genre`, `Herkomst`, `Omschrijving`) VALUES (3, 'Electric Dreamscape', 'Electronic', NULL, NULL);
+INSERT INTO `CasusCafe`.`Band` (`idBand`, `BandNaam`, `Genre`, `Herkomst`, `Omschrijving`) VALUES (4, 'Bluegrass Harmony', 'Bluegrass', NULL, NULL);
+INSERT INTO `CasusCafe`.`Band` (`idBand`, `BandNaam`, `Genre`, `Herkomst`, `Omschrijving`) VALUES (5, 'Fusion Collective', 'Funk', NULL, NULL);
+INSERT INTO `CasusCafe`.`Band` (`idBand`, `BandNaam`, `Genre`, `Herkomst`, `Omschrijving`) VALUES (6, 'Noir Quartet', 'Jazz', NULL, NULL);
+INSERT INTO `CasusCafe`.`Band` (`idBand`, `BandNaam`, `Genre`, `Herkomst`, `Omschrijving`) VALUES (7, 'Roads Revival', 'Country', NULL, NULL);
+INSERT INTO `CasusCafe`.`Band` (`idBand`, `BandNaam`, `Genre`, `Herkomst`, `Omschrijving`) VALUES (8, 'Pulse Ensemble', 'Progressive Rock', NULL, NULL);
+INSERT INTO `CasusCafe`.`Band` (`idBand`, `BandNaam`, `Genre`, `Herkomst`, `Omschrijving`) VALUES (9, 'Roots Unity', 'Reggae', NULL, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `CasusCafe`.`Event`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `CasusCafe`;
+INSERT INTO `CasusCafe`.`Event` (`idEvent`, `Naam`, `Datum`, `BeginTijd`, `Entree`, `AantalKlanten`, `Uitverkocht`, `DrinkenOmzet`) VALUES (1, 'Acoustic Groove Night', '2024-04-23', '19:00', 10, NULL, NULL, NULL);
+INSERT INTO `CasusCafe`.`Event` (`idEvent`, `Naam`, `Datum`, `BeginTijd`, `Entree`, `AantalKlanten`, `Uitverkocht`, `DrinkenOmzet`) VALUES (2, 'Soulful Sessions', '2024-05-12', '20:00', 15, NULL, NULL, NULL);
+INSERT INTO `CasusCafe`.`Event` (`idEvent`, `Naam`, `Datum`, `BeginTijd`, `Entree`, `AantalKlanten`, `Uitverkocht`, `DrinkenOmzet`) VALUES (3, 'Melody Junction', '2024-05-20', '20:00', 15, NULL, NULL, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `CasusCafe`.`Event_has_Band`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `CasusCafe`;
+INSERT INTO `CasusCafe`.`Event_has_Band` (`Event_idEvent`, `Band_idBand`, `actType`, `sets`, `setDuur`) VALUES (1, 4, NULL, NULL, NULL);
+INSERT INTO `CasusCafe`.`Event_has_Band` (`Event_idEvent`, `Band_idBand`, `actType`, `sets`, `setDuur`) VALUES (1, 6, NULL, NULL, NULL);
+INSERT INTO `CasusCafe`.`Event_has_Band` (`Event_idEvent`, `Band_idBand`, `actType`, `sets`, `setDuur`) VALUES (1, 9, NULL, NULL, NULL);
+INSERT INTO `CasusCafe`.`Event_has_Band` (`Event_idEvent`, `Band_idBand`, `actType`, `sets`, `setDuur`) VALUES (3, 1, NULL, NULL, NULL);
+INSERT INTO `CasusCafe`.`Event_has_Band` (`Event_idEvent`, `Band_idBand`, `actType`, `sets`, `setDuur`) VALUES (3, 2, NULL, NULL, NULL);
+INSERT INTO `CasusCafe`.`Event_has_Band` (`Event_idEvent`, `Band_idBand`, `actType`, `sets`, `setDuur`) VALUES (3, 3, NULL, NULL, NULL);
+INSERT INTO `CasusCafe`.`Event_has_Band` (`Event_idEvent`, `Band_idBand`, `actType`, `sets`, `setDuur`) VALUES (3, 8, NULL, NULL, NULL);
+INSERT INTO `CasusCafe`.`Event_has_Band` (`Event_idEvent`, `Band_idBand`, `actType`, `sets`, `setDuur`) VALUES (2, 5, NULL, NULL, NULL);
+INSERT INTO `CasusCafe`.`Event_has_Band` (`Event_idEvent`, `Band_idBand`, `actType`, `sets`, `setDuur`) VALUES (2, 7, NULL, NULL, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `CasusCafe`.`Login`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `CasusCafe`;
+INSERT INTO `CasusCafe`.`Login` (`idLogin`, `Username`, `Password`, `rol`) VALUES (1, 'Lilith', 'casuscafe', 'administrator');
+
+COMMIT;
+

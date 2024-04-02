@@ -1,11 +1,11 @@
 <?php
-session_start();
+session_start(); 
 
-if (isset($_SESSION["user"])) {
+if (isset($_SESSION["user"])) { //checks if user is logged in
     
-    $_SESSION = array();
+    $_SESSION = array(); //logs user out
     session_destroy();
     
-    header('Location: ../homepage.php');
+    header('Location: ../homepage.php'); //sends user back
     exit();
 }
