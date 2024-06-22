@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+$hashed_pw = password_hash("casuscafe", 0);
+print_r($hashed_pw);
 ?>
 
 <!DOCTYPE html>

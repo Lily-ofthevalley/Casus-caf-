@@ -14,11 +14,11 @@
                 while ($row = $resultEvent->fetch(PDO::FETCH_ASSOC))
                 {
                     echo "<div class='event'>";
-                    echo "<p class='eventName'>".$row["Naam"]."</p>";
+                    echo "<p class='eventName'>" . htmlspecialchars($row["Naam"], ENT_QUOTES, 'UTF-8') . "</p>";
                     echo "<div class='eventInfo'>";
-                    echo "<p>Datum: ".$row["Datum"]."</p>";
-                    echo "<p>Aanvangstijd: ".$row["BeginTijd"]."</p>";
-                    echo "<p>Prijs: ".$row["Entree"]. " Euro</p>";
+                    echo "<p>Datum: " . htmlspecialchars($row["Datum"], ENT_QUOTES, 'UTF-8') . "</p>";
+                    echo "<p>Aanvangstijd: " . htmlspecialchars($row["BeginTijd"], ENT_QUOTES, 'UTF-8') . "</p>";
+                    echo "<p>Prijs: " . htmlspecialchars($row["Entree"], ENT_QUOTES, 'UTF-8') . " Euro</p>";
                     echo "</div>";
                     echo "<div class='bandsEvent'>";
 
@@ -32,7 +32,7 @@
                             echo "<p>Artiesten</p>";
                             echo "<ul>";
                             while ($bandRow = $resultBands->fetch(PDO::FETCH_ASSOC)){ //places the band names in the right place
-                                echo "<li>".$bandRow["BandNaam"]."</li>";
+                                echo "<li>" . htmlspecialchars($bandrow["BandNaam"], ENT_QUOTES, 'UTF-8') . "</li>";
                             }
                             echo "</ul>";
                             echo "</div>";
@@ -42,7 +42,7 @@
                             echo "<p>Genre</p>";
                             echo "<ul>";
                             while ($bandRow = $resultBands->fetch(PDO::FETCH_ASSOC)){ //places the band genres in the right place
-                                echo "<li>".$bandRow["Genre"]."</li>";
+                                echo "<li>" . htmlspecialchars($bandRow["Genre"], ENT_QUOTES, 'UTF-8') . "</li>";
                             }
                             echo "</ul>";
                             echo "</div>";

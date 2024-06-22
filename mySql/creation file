@@ -156,7 +156,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `CasusCafe`.`Login` (
   `idLogin` INT NOT NULL AUTO_INCREMENT,
   `Username` VARCHAR(45) NULL,
-  `Password` VARCHAR(45) NULL,
+  `Password` VARCHAR(64) NULL,
   `rol` VARCHAR(45) NULL,
   PRIMARY KEY (`idLogin`))
 ENGINE = InnoDB;
@@ -219,7 +219,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `CasusCafe`;
-INSERT INTO `CasusCafe`.`Login` (`idLogin`, `Username`, `Password`, `rol`) VALUES (1, 'Lilith', 'casuscafe', 'administrator');
+INSERT INTO `CasusCafe`.`Login` (`idLogin`, `Username`, `Password`, `rol`) VALUES (1, 'Lilith', '$2y$10$aqfQSzxcGgr8WhkK3nA.7OuHM10yOgIp24bIkmNg710n/7rA.Vf1e', 'administrator');
 
 COMMIT;
 

@@ -15,7 +15,7 @@
         echo "<ul class='bandList'>";
             if ($result->rowCount() > 0) { //checks if there are bands
                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) { //places the band names in the right place
-                echo "<li>" . $row["BandNaam"] . "</li>";
+                echo "<li>" . htmlspecialchars($row["BandNaam"], ENT_QUOTES, 'UTF-8') . "</li>";
                 }
             } else {
             echo "<p>No data found</p>";
@@ -30,7 +30,7 @@
             echo "<ul class='bandList'>";
             if ($result->rowCount() > 0) { //checks if there are genres
                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) { //places the genres in the right place
-                echo "<li>" . $row["Genre"] . "</li>";
+                echo "<li>" . htmlspecialchars($row["Genre"], ENT_QUOTES, 'UTF-8') . "</li>";
             }
         } else {
             echo "<p>No data found</p>";
