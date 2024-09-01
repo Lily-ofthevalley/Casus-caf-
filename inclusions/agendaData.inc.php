@@ -32,7 +32,7 @@
                             echo "<p>Artiesten</p>";
                             echo "<ul>";
                             while ($bandRow = $resultBands->fetch(PDO::FETCH_ASSOC)){ //places the band names in the right place
-                                echo "<li>" . htmlspecialchars($bandrow["BandNaam"], ENT_QUOTES, 'UTF-8') . "</li>";
+                                echo "<li>" . htmlspecialchars($bandRow["BandNaam"], ENT_QUOTES, 'UTF-8') . "</li>";
                             }
                             echo "</ul>";
                             echo "</div>";
